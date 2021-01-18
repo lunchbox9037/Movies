@@ -18,25 +18,27 @@ class MovieDetailViewController: UIViewController {
     // MARK: - Properties
     var movie: Movie?
     var whereToWatch: String?
-    var whereToWatchValues: [String] = []
+    var whereToWatchValues: [String] = ["Netflix", "Hulu", "Disney+", "Apple TV+", "HBO Max", "Prime Video"]
 
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         clearFieldsButton.layer.cornerRadius = 8
         //data for the uipicker
-        whereToWatchValues = ["Netflix", "Hulu", "Disney+", "Apple TV+", "Prime Video"]
-        self.whereToWatchPicker.delegate = self
-        self.whereToWatchPicker.dataSource = self
+        whereToWatchPicker.delegate = self
+        whereToWatchPicker.dataSource = self
+        //default value for the uipicker
+        whereToWatch = whereToWatchValues[0]
         updateViews()
     }
     
     // MARK: - Actions
     @IBAction func saveButtonTapped(_ sender: Any) {
         guard let title = titleLabel.text, !title.isEmpty,
-              let genre = genreLabel.text, !genre.isEmpty,
-              let director = directorLabel.text else {return}
-        
+              let genre = genreLabel.text,
+              let director = directorLabel.text,
+              let whereToWatch = whereToWatch else {return}
+       
         if let movie = movie {
             MovieController.shared.update(movie: movie, title: title, genre: genre, director: director, whereToWatch: whereToWatch)
         } else {
@@ -53,18 +55,15 @@ class MovieDetailViewController: UIViewController {
         whereToWatchPicker.selectRow(0, inComponent: 0, animated: true)
     }
     
-    
-    
     // MARK: - Functions
     func updateViews() {
         guard let movieDetails = movie else {return}
         titleLabel.text = movieDetails.title
         directorLabel.text = movieDetails.director
         genreLabel.text = movieDetails.genre
-        if let whereToWatchSelected = movieDetails.whereToWatch {
-            let pickerIndex = whereToWatchValues.firstIndex(of: whereToWatchSelected) ?? 0
-            whereToWatchPicker.selectRow(pickerIndex, inComponent: 0, animated: true)
-        }
+        let whereToWatchSelected = movieDetails.whereToWatch
+        let pickerIndex = whereToWatchValues.firstIndex(of: whereToWatchSelected) ?? 0
+        whereToWatchPicker.selectRow(pickerIndex, inComponent: 0, animated: true)
     }
 }
 

@@ -113,8 +113,8 @@
                                 </constraints>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cAt-th-oTB">
-                                <rect key="frame" x="151" y="356" width="112" height="30"/>
-                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <rect key="frame" x="151" y="396" width="112" height="30"/>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
                                 <state key="normal" title="Clear Fields">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -134,7 +134,7 @@
                             <constraint firstItem="5Pa-cF-msq" firstAttribute="leading" secondItem="17Z-y0-TpN" secondAttribute="leading" constant="20" id="JVj-26-wAY"/>
                             <constraint firstItem="cAt-th-oTB" firstAttribute="centerX" secondItem="O1P-pj-YJO" secondAttribute="centerX" id="Uuc-9s-mL7"/>
                             <constraint firstItem="O1P-pj-YJO" firstAttribute="top" secondItem="U98-DZ-Sk1" secondAttribute="bottom" constant="20" id="Wdx-Xc-bLF"/>
-                            <constraint firstItem="cAt-th-oTB" firstAttribute="top" secondItem="O1P-pj-YJO" secondAttribute="bottom" constant="20" id="aqV-kQ-Ueb"/>
+                            <constraint firstItem="cAt-th-oTB" firstAttribute="top" secondItem="O1P-pj-YJO" secondAttribute="bottom" constant="60" id="aqV-kQ-Ueb"/>
                             <constraint firstItem="cAt-th-oTB" firstAttribute="width" secondItem="O1P-pj-YJO" secondAttribute="width" multiplier="0.3" id="iAk-sJ-DSs"/>
                             <constraint firstItem="5Pa-cF-msq" firstAttribute="width" secondItem="ypS-vl-VhE" secondAttribute="width" multiplier="0.6" id="j0Z-Ct-SrQ"/>
                             <constraint firstItem="ypS-vl-VhE" firstAttribute="top" secondItem="17Z-y0-TpN" secondAttribute="top" constant="20" id="lj4-vR-s4I"/>
@@ -186,8 +186,8 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

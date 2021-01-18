@@ -9,12 +9,12 @@ import Foundation
 
 class Movie: Codable {
     var title: String
-    var genre: String
+    var genre: String?
     var director: String?
-    var whereToWatch: String?
+    var whereToWatch: String
     var isWatched: Bool
     
-    init(title: String, genre: String, director: String?, whereToWatch: String?, isWatched: Bool = false) {
+    init(title: String, genre: String?, director: String?, whereToWatch: String, isWatched: Bool = false) {
         self.title = title
         self.genre = genre
         self.director = director

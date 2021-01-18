@@ -15,13 +15,13 @@ class MovieController {
     var movies: [Movie] = []
     
     // MARK: - CRUD
-    func createMovieWith(title: String, genre: String, director: String?, whereToWatch: String?) {
+    func createMovieWith(title: String, genre: String?, director: String?, whereToWatch: String) {
         let newMovie  = Movie(title: title, genre: genre, director: director, whereToWatch: whereToWatch)
         movies.append(newMovie)
         saveToPersistentStorage()
     }
     
-    func update(movie: Movie, title: String, genre: String, director: String?, whereToWatch: String?) {
+    func update(movie: Movie, title: String, genre: String?, director: String?, whereToWatch: String) {
         movie.title = title
         movie.genre = genre
         movie.director = director
