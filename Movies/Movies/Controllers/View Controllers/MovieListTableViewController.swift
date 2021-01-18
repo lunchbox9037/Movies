@@ -28,14 +28,11 @@ class MovieListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "movieCell", for: indexPath) as? MovieTableViewCell else {return UITableViewCell()}
         
-//        cell.delegate = self
-        
-
-
+        cell.delegate = self
+        cell.updateCellWith(movie: MovieController.shared.movies[indexPath.row])
         return cell
     }
 
-    // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let movieToDelete = MovieController.shared.movies[indexPath.row]
@@ -52,5 +49,15 @@ class MovieListTableViewController: UITableViewController {
             let movieToSend = MovieController.shared.movies[index.row]
             destination.movie = movieToSend
         }
+    }
+}
+
+// MARK: -  Custom Cell Delegate Methods
+extension MovieListTableViewController: MovieTableViewCellDelegate {
+    func toggleIsWatched(_ sender: MovieTableViewCell) {
+        guard let indexPath = tableView.indexPath(for: sender) else {return}
+        let movieToToggle = MovieController.shared.movies[indexPath.row]
+        MovieController.shared.toggleIsWatched(movie: movieToToggle)
+        self.tableView.reloadData()
     }
 }

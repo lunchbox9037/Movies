@@ -12,39 +12,48 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var titleLabel: UITextField!
     @IBOutlet weak var directorLabel: UITextField!
     @IBOutlet weak var genreLabel: UITextField!
-    @IBOutlet weak var releaseDateLabel: UITextField!
-    @IBOutlet weak var movieWatchedDatePicker: UIDatePicker!
-    
+    @IBOutlet weak var whereToWatchPicker: UIPickerView!
+    @IBOutlet weak var clearFieldsButton: UIButton!
     
     // MARK: - Properties
     var movie: Movie?
-    var date: Date?
+    var whereToWatch: String?
+    var whereToWatchValues: [String] = []
 
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        clearFieldsButton.layer.cornerRadius = 8
+        //data for the uipicker
+        whereToWatchValues = ["Netflix", "Hulu", "Disney+", "Apple TV+", "Prime Video"]
+        self.whereToWatchPicker.delegate = self
+        self.whereToWatchPicker.dataSource = self
+        updateViews()
     }
     
     // MARK: - Actions
-    @IBAction func movieWatchedDatePickerChanged(_ sender: Any) {
-        date = movieWatchedDatePicker.date
-    }
-
     @IBAction func saveButtonTapped(_ sender: Any) {
         guard let title = titleLabel.text, !title.isEmpty,
-              let director = directorLabel.text, !director.isEmpty,
               let genre = genreLabel.text, !genre.isEmpty,
-              let releaseDate = releaseDateLabel.text else {return}
+              let director = directorLabel.text else {return}
         
         if let movie = movie {
-            MovieController.shared.update(movie: movie, title: title, director: director, genre: genre, releaseDate: releaseDate, watchDate: date)
+            MovieController.shared.update(movie: movie, title: title, genre: genre, director: director, whereToWatch: whereToWatch)
         } else {
-            MovieController.shared.createMovieWith(title: title, director: director, genre: genre, releaseDate: releaseDate, watchDate: date)
+            MovieController.shared.createMovieWith(title: title, genre: genre, director: director, whereToWatch: whereToWatch)
         }
         
         navigationController?.popViewController(animated: true)
     }
+    
+    @IBAction func clearFieldsButtonTapped(_ sender: Any) {
+        titleLabel.text = ""
+        directorLabel.text = ""
+        genreLabel.text = ""
+        whereToWatchPicker.selectRow(0, inComponent: 0, animated: true)
+    }
+    
+    
     
     // MARK: - Functions
     func updateViews() {
@@ -52,8 +61,28 @@ class MovieDetailViewController: UIViewController {
         titleLabel.text = movieDetails.title
         directorLabel.text = movieDetails.director
         genreLabel.text = movieDetails.genre
-        releaseDateLabel.text = "\(movieDetails.releaseDate)"
-        guard let watchedDate = movieDetails.watchDate else {return}
-        movieWatchedDatePicker.date = watchedDate
+        if let whereToWatchSelected = movieDetails.whereToWatch {
+            let pickerIndex = whereToWatchValues.firstIndex(of: whereToWatchSelected) ?? 0
+            whereToWatchPicker.selectRow(pickerIndex, inComponent: 0, animated: true)
+        }
+    }
+}
+
+// MARK: - UIPicker DataSource and Delegate
+extension MovieDetailViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return whereToWatchValues.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return whereToWatchValues[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        whereToWatch = whereToWatchValues[row]
     }
 }
