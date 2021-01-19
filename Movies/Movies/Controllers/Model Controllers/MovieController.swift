@@ -8,9 +8,9 @@
 import Foundation
 
 class MovieController {
+    // MARK: - Properties
     //shared instance
     static var shared = MovieController()
-    
     //sot
     var movies: [Movie] = []
     

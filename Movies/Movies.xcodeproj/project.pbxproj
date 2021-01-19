@@ -45,6 +45,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F61FE7DC25B68BE400EACE56 /* Custom Cell */ = {
+			isa = PBXGroup;
+			children = (
+				F61FEA3B25B10E84004A51A0 /* MovieTableViewCell.swift */,
+			);
+			path = "Custom Cell";
+			sourceTree = "<group>";
+		};
 		F61FEA0125B0F9DB004A51A0 = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +120,7 @@
 		F61FEA2E25B10696004A51A0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F61FE7DC25B68BE400EACE56 /* Custom Cell */,
 				F61FEA2625B0FA83004A51A0 /* Storyboards */,
 			);
 			path = Views;
@@ -122,7 +131,6 @@
 			children = (
 				F61FEA3525B10ABA004A51A0 /* MovieListTableViewController.swift */,
 				F61FEA3825B10B28004A51A0 /* MovieDetailViewController.swift */,
-				F61FEA3B25B10E84004A51A0 /* MovieTableViewCell.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";

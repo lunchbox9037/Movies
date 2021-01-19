@@ -24,10 +24,10 @@ class MovieDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         clearFieldsButton.layer.cornerRadius = 8
-        //data for the uipicker
+        //set the view controller as delegate for data and delegate of the uipicker
         whereToWatchPicker.delegate = self
         whereToWatchPicker.dataSource = self
-        //default value for the uipicker
+        //default value for the uipicker will always be the first item in the array
         whereToWatch = whereToWatchValues[0]
         updateViews()
     }
@@ -65,9 +65,9 @@ class MovieDetailViewController: UIViewController {
         let pickerIndex = whereToWatchValues.firstIndex(of: whereToWatchSelected) ?? 0
         whereToWatchPicker.selectRow(pickerIndex, inComponent: 0, animated: true)
     }
-}
+}//end of class
 
-// MARK: - UIPicker DataSource and Delegate
+// MARK: - UIPicker DataSource and Delegate methods
 extension MovieDetailViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1

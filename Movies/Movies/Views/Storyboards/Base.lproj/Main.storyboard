@@ -17,39 +17,44 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="movieCell" rowHeight="90" id="YJL-Wu-FrJ" customClass="MovieTableViewCell" customModule="Movies" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="movieCell" id="YJL-Wu-FrJ" customClass="MovieTableViewCell" customModule="Movies" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YJL-Wu-FrJ" id="8E9-ZX-gkv">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(movie title)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QFx-eA-VIQ">
-                                            <rect key="frame" x="30" y="21" width="96" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="(movie title)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QFx-eA-VIQ">
+                                            <rect key="frame" x="30" y="21" width="319" height="20.5"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(where to watch)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="79R-QB-xS0">
-                                            <rect key="frame" x="30" y="47" width="116" height="18"/>
+                                            <rect key="frame" x="30" y="46.5" width="319" height="22.5"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A5f-ag-OrA">
+                                        <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A5f-ag-OrA">
                                             <rect key="frame" x="359" y="27.5" width="35" height="35"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="35" id="KGc-FF-lnB"/>
                                                 <constraint firstAttribute="width" constant="35" id="Wp2-vG-BvF"/>
                                                 <constraint firstAttribute="width" secondItem="A5f-ag-OrA" secondAttribute="height" multiplier="1:1" id="nOa-il-eVF"/>
                                             </constraints>
-                                            <state key="normal" title="Button"/>
+                                            <state key="normal">
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                            </state>
                                             <connections>
                                                 <action selector="isWatchedButtonTapped:" destination="YJL-Wu-FrJ" eventType="touchUpInside" id="dKP-Cq-GGa"/>
                                             </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="79R-QB-xS0" secondAttribute="bottom" constant="10" id="31B-By-paN"/>
+                                        <constraint firstItem="A5f-ag-OrA" firstAttribute="leading" secondItem="79R-QB-xS0" secondAttribute="trailing" constant="10" id="8r5-nW-KqL"/>
+                                        <constraint firstItem="A5f-ag-OrA" firstAttribute="leading" secondItem="QFx-eA-VIQ" secondAttribute="trailing" constant="10" id="K6b-9g-07w"/>
                                         <constraint firstItem="A5f-ag-OrA" firstAttribute="centerY" secondItem="8E9-ZX-gkv" secondAttribute="centerY" id="Tj7-5j-fdd"/>
                                         <constraint firstItem="QFx-eA-VIQ" firstAttribute="leading" secondItem="8E9-ZX-gkv" secondAttribute="leadingMargin" constant="10" id="cmo-xu-nJa"/>
                                         <constraint firstItem="79R-QB-xS0" firstAttribute="top" secondItem="QFx-eA-VIQ" secondAttribute="bottom" constant="5" id="dCK-ga-Z0n"/>
@@ -59,6 +64,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="cellView" destination="8E9-ZX-gkv" id="ptf-Eq-hAC"/>
                                     <outlet property="isWatchedButton" destination="A5f-ag-OrA" id="hab-d6-znK"/>
                                     <outlet property="titleLabel" destination="QFx-eA-VIQ" id="oC3-PC-GCi"/>
                                     <outlet property="whereToWatchLabel" destination="79R-QB-xS0" id="HqM-dD-1T9"/>
@@ -107,13 +113,10 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O1P-pj-YJO">
-                                <rect key="frame" x="20" y="216" width="374" height="120"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="6mB-dA-rW3"/>
-                                </constraints>
+                                <rect key="frame" x="20" y="216" width="374" height="216"/>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cAt-th-oTB">
-                                <rect key="frame" x="151" y="396" width="112" height="30"/>
+                                <rect key="frame" x="151" y="502" width="112" height="30"/>
                                 <color key="backgroundColor" systemColor="systemRedColor"/>
                                 <state key="normal" title="Clear Fields">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -134,7 +137,7 @@
                             <constraint firstItem="5Pa-cF-msq" firstAttribute="leading" secondItem="17Z-y0-TpN" secondAttribute="leading" constant="20" id="JVj-26-wAY"/>
                             <constraint firstItem="cAt-th-oTB" firstAttribute="centerX" secondItem="O1P-pj-YJO" secondAttribute="centerX" id="Uuc-9s-mL7"/>
                             <constraint firstItem="O1P-pj-YJO" firstAttribute="top" secondItem="U98-DZ-Sk1" secondAttribute="bottom" constant="20" id="Wdx-Xc-bLF"/>
-                            <constraint firstItem="cAt-th-oTB" firstAttribute="top" secondItem="O1P-pj-YJO" secondAttribute="bottom" constant="60" id="aqV-kQ-Ueb"/>
+                            <constraint firstItem="cAt-th-oTB" firstAttribute="top" secondItem="O1P-pj-YJO" secondAttribute="bottom" constant="70" id="aqV-kQ-Ueb"/>
                             <constraint firstItem="cAt-th-oTB" firstAttribute="width" secondItem="O1P-pj-YJO" secondAttribute="width" multiplier="0.3" id="iAk-sJ-DSs"/>
                             <constraint firstItem="5Pa-cF-msq" firstAttribute="width" secondItem="ypS-vl-VhE" secondAttribute="width" multiplier="0.6" id="j0Z-Ct-SrQ"/>
                             <constraint firstItem="ypS-vl-VhE" firstAttribute="top" secondItem="17Z-y0-TpN" secondAttribute="top" constant="20" id="lj4-vR-s4I"/>
